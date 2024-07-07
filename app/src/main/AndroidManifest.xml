@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="e.p.bleController">
+
+    <!-- this is the most confusing, stupid, effing thing ever
+         it's not enough to ask for permissions in the manifest
+
+         different permissions are required for different android versions.
+         and its all very convoluted and hard to understand.
+         I get it working pretty good on one platform, then it
+         doesn't work on some other one. -->
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
+    <!-- BLUETOOTH_SCAN and CONNECT are required on android SDK 31 (android 12) and above -->
+
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/> <!-- android:usesPermissionFlags="neverForLocation" /-->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <!--uses-permission android:name="android.permission.ACCACCESS_BACKGROUND_LOCATION"/-->
+    <!--uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/-->
+
+    <!-- ACCESS_FINE_LOCATION is required on Android 11 and below  -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.bleController">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="landscape">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
